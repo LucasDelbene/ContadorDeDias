@@ -5,8 +5,13 @@ const eventDate = document.querySelector("#eventDate");
 const buttonAdd = document.querySelector("#bAdd");
 
 const json = load();
-const arr = JSON.parse(json);
-events = arr ? [...arr] : [];
+
+try{
+  arr = JSON.parse(json);
+} catch (error){
+  arr = [];
+}
+events = arr? [...arr]: [];
 renderEvents();
 
 document.querySelector("form").addEventListener("submit", (e) => {
